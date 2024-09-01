@@ -43,7 +43,7 @@ To run different parts of the application using npm scripts:
 - Proxy Service:
 
 ```bash
-npm run start:proxy
+npm run start
 ```
 
 - Read API:
