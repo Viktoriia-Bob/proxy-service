@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
-import { PostsController } from './posts.controller';
-import { PostsService } from './posts.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { Post } from '@app/entities';
 import { RedisCacheModule } from '@app/redis-cache';
+
+import { PostsController } from './posts.controller';
+import { PostsService } from './posts.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Post]), RedisCacheModule],

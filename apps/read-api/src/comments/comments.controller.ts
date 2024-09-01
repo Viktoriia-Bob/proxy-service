@@ -1,8 +1,10 @@
 import { Controller, Logger } from '@nestjs/common';
-import { CommentsService } from './comments.service';
 import { MessagePattern, Payload } from '@nestjs/microservices';
+
 import { Patterns } from '@app/enums';
 import { CommentsFilterDto } from '@app/types';
+
+import { CommentsService } from './comments.service';
 
 @Controller('comments')
 export class CommentsController {

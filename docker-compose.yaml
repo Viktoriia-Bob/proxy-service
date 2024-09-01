@@ -1,49 +1,15 @@
 version: '3.8'
 services:
-  proxy-service:
-    build:
-      context: .
-      dockerfile: ./apps/proxy-service/Dockerfile
-    ports:
-      - "3000:3000"
-    depends_on:
-      - read-api
-      - write-api
-    environment:
-      - RABBITMQ_URL=amqp://rabbitmq
-
-  read-api:
-    build:
-      context: .
-      dockerfile: ./apps/read-api/Dockerfile
-    ports:
-      - "3001:3000"
-    environment:
-      - REDIS_HOST=redis
-      - RABBITMQ_URL=amqp://rabbitmq
-    depends_on:
-      - redis
-
-  write-api:
-    build:
-      context: .
-      dockerfile: ./apps/write-api/Dockerfile
-    ports:
-      - "3002:3000"
-    environment:
-      - REDIS_HOST=redis
-      - RABBITMQ_URL=amqp://rabbitmq
-
-  rabbitmq:
-    image: rabbitmq:3-management
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-
   redis:
     image: redis:alpine
     ports:
       - "6379:6379"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5673:5672"
+      - "15672:15672"
 
   db:
     image: postgres
@@ -54,3 +20,46 @@ services:
       POSTGRES_PASSWORD: 123123123
     ports:
       - "5432:5432"
+
+  write-api:
+    build:
+      context: .
+      dockerfile: ./apps/write-api/Dockerfile
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - db
+      - rabbitmq
+
+  read-api:
+    build:
+      context: .
+      dockerfile: ./apps/read-api/Dockerfile
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env
+    depends_on:
+      - write-api
+      - redis
+      - db
+      - rabbitmq
+
+  proxy-service:
+    build:
+      context: .
+      dockerfile: ./apps/proxy-service/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env
+    depends_on:
+      - read-api
+      - write-api
+      - rabbitmq
+      - db

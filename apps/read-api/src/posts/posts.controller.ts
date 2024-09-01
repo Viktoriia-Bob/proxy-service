@@ -2,9 +2,9 @@ import { Controller, Logger } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 
 import { Patterns } from '@app/enums';
+import { PostsFilterDto } from '@app/types';
 
 import { PostsService } from './posts.service';
-import { PostsFilterDto } from '@app/types';
 
 @Controller('posts')
 export class PostsController {
