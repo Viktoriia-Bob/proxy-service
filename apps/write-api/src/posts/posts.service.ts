@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Post } from '@app/entities';
 import { Repository } from 'typeorm';
+
+import { Post } from '@app/entities';
 import { CreatePostDto } from '@app/types/create-post.dto';
 import { UpdatePostDto } from '@app/types/update-post.dto';
 import { RedisCacheService } from '@app/redis-cache';

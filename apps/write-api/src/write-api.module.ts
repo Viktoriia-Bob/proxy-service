@@ -7,8 +7,9 @@ import { Post, User, Comment } from '@app/entities';
 import { PostsModule } from './posts/posts.module';
 import { CommentsModule } from './comments/comments.module';
 import { UsersModule } from './users/users.module';
-import { InitDatabase1725105562367 } from './migrations/1725105562367-InitDatabase';
 import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
+
+import { InitDatabase1725105562367 } from './migrations/1725105562367-InitDatabase';
 
 @Module({
   imports: [

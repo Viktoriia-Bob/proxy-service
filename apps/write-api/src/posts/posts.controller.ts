@@ -1,8 +1,10 @@
 import { Controller, Logger } from '@nestjs/common';
-import { PostsService } from './posts.service';
 import { MessagePattern, Payload } from '@nestjs/microservices';
+
 import { Patterns } from '@app/enums';
 import { CreatePostDto, UpdatePostDto } from '@app/types';
+
+import { PostsService } from './posts.service';
 
 @Controller('posts')
 export class PostsController {

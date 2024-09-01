@@ -2,9 +2,9 @@ import { Controller, Logger } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 
 import { Patterns } from '@app/enums';
+import { UserFilterDto } from '@app/types';
 
 import { UsersService } from './users.service';
-import { UserFilterDto } from '@app/types';
 
 @Controller('users')
 export class UsersController {

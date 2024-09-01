@@ -1,8 +1,9 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { Cache, CACHE_MANAGER } from '@nestjs/cache-manager';
 
 @Injectable()
 export class RedisCacheService {
+  private logger: Logger = new Logger(RedisCacheService.name);
   constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
 
   generateRedisKey(type: 'users'): string;
@@ -21,12 +22,12 @@ export class RedisCacheService {
   }
 
   get(key: string): any {
-    console.log('GET');
+    this.logger.log('GET');
     return this.cacheManager.get(key);
   }
 
   set(key: string, value: any) {
-    console.log('SET');
+    this.logger.log('SET');
     return this.cacheManager.set(key, value);
   }
 }

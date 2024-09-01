@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+
 import { RabbitmqService } from './rabbitmq.service';
 
 describe('RabbitmqService', () => {
