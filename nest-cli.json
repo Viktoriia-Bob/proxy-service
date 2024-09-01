@@ -36,6 +36,51 @@
       "compilerOptions": {
         "tsConfigPath": "apps/read-api/tsconfig.app.json"
       }
+    },
+    "types": {
+      "type": "library",
+      "root": "libs/types",
+      "entryFile": "index",
+      "sourceRoot": "libs/types/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/types/tsconfig.lib.json"
+      }
+    },
+    "entities": {
+      "type": "library",
+      "root": "libs/entities",
+      "entryFile": "index",
+      "sourceRoot": "libs/entities/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/entities/tsconfig.lib.json"
+      }
+    },
+    "enums": {
+      "type": "library",
+      "root": "libs/enums",
+      "entryFile": "index",
+      "sourceRoot": "libs/enums/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/enums/tsconfig.lib.json"
+      }
+    },
+    "generate-redis-key": {
+      "type": "library",
+      "root": "libs/generate-redis-key",
+      "entryFile": "index",
+      "sourceRoot": "libs/generate-redis-key/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/generate-redis-key/tsconfig.lib.json"
+      }
+    },
+    "redis-cache": {
+      "type": "library",
+      "root": "libs/redis-cache",
+      "entryFile": "index",
+      "sourceRoot": "libs/redis-cache/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/redis-cache/tsconfig.lib.json"
+      }
     }
   }
 }
